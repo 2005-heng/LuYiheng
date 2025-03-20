@@ -1,3 +1,3 @@
-- 校级一等奖学金, 2022.  
+优秀团员
 
-- Outstanding Graduation Thesis, XXX University, 2023. 
+学习标兵
