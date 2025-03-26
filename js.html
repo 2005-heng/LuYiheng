@@ -1,32 +1,72 @@
 <!DOCTYPE html>
-<html lang="zh - CN">
+<html lang="zh-CN">
 
 <head>
-    <meta charset="UTF - 8">
-    <meta name="viewport" content="width=device - width, initial - scale=1.0">
-    <title>JavaScript演示</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能按键示例</title>
+    <style>
+        /* CSS样式部分，用于设置表单和按钮样式 */
+        form {
+            width: 400px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
+    <form action="/cgi-bin/post-query" method="POST">
+        <!-- 放置两个按钮 -->
+        <button id="changeColorBtn">切换网页颜色</button>
+        <button id="showTimeBtn">显示当前时间</button>
+    </form>
+
     <script>
-        // 弹出对话框
-        alert('欢迎来到JavaScript演示页面！');
+        // JavaScript部分，实现按钮的功能逻辑
+        // 获取按钮元素
+        const changeColorBtn = document.getElementById('changeColorBtn');
+        const showTimeBtn = document.getElementById('showTimeBtn');
 
-        // 改变屏幕背景色
-        document.body.style.backgroundColor ='skyblue';
+        // 定义颜色数组
+        const colors = ['lemonchiffon', 'lightskyblue', 'pink', 'lightgreen'];
 
-        // 获取当前时间
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const seconds = now.getSeconds();
+        // 为切换颜色按钮添加点击事件监听器
+        changeColorBtn.addEventListener('click', function () {
+            // 生成随机索引
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            // 获取随机颜色
+            const randomColor = colors[randomIndex];
+            // 设置网页背景颜色
+            document.body.style.backgroundColor = randomColor;
+        });
 
-        // 创建一个段落元素来显示时间
-        const timeElement = document.createElement('p');
-        timeElement.textContent = `当前时间是：${hours}:${minutes}:${seconds}`;
-
-        // 将时间段落添加到页面中
-        document.body.appendChild(timeElement);
+        // 为显示时间按钮添加点击事件监听器
+        showTimeBtn.addEventListener('click', function () {
+            // 获取当前时间
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            // 弹出当前时间
+            alert(`当前时间是：${hours}:${minutes}:${seconds}`);
+        });
     </script>
 </body>
 
