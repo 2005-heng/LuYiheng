@@ -28,6 +28,11 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        #time-display {
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -36,6 +41,7 @@
         <!-- 放置两个按钮 -->
         <button id="changeColorBtn">切换网页颜色</button>
         <button id="showTimeBtn">显示当前时间</button>
+        <div id="time-display"></div>
     </form>
 
     <script>
@@ -43,6 +49,7 @@
         // 获取按钮元素
         const changeColorBtn = document.getElementById('changeColorBtn');
         const showTimeBtn = document.getElementById('showTimeBtn');
+        const timeDisplay = document.getElementById('time-display');
 
         // 定义颜色数组
         const colors = ['lemonchiffon', 'lightskyblue', 'pink', 'lightgreen'];
@@ -64,8 +71,8 @@
             const hours = now.getHours().toString().padStart(2, '0');
             const minutes = now.getMinutes().toString().padStart(2, '0');
             const seconds = now.getSeconds().toString().padStart(2, '0');
-            // 弹出当前时间
-            alert(`当前时间是：${hours}:${minutes}:${seconds}`);
+            // 在网页中显示当前时间
+            timeDisplay.innerHTML = `当前时间是：${hours}:${minutes}:${seconds}`;
         });
     </script>
 </body>
